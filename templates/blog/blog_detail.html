@@ -1,0 +1,39 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<style>
+    body{
+    background-image: url('https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/36659165_972167702988235_7731656128890667008_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=eAYXwlCOHFcAX8J1HJm&_nc_ht=scontent-ssn1-1.xx&oh=00_AfACTnUbK-vfC_xoqc4LQLOFJdvkQ5m2KCYRDA-D-pDy5A&oe=659E274E');
+    background-size:cover;
+    }
+</style>
+<div class="container">
+    <center>
+        {% block page_title %}
+        <h1>나만의 블로그</h1>
+    </center>
+    <hr size="10px">
+<a href="http://127.0.0.1:8000/blog/">home</a>
+    <a href="http://127.0.0.1:8000/blog/create/">포스트만들기</a>
+    <hr size="10px">
+    <span style="color:black">
+        <h2>
+            {{ blog.title }}
+            {% endblock page_title %}
+    </h2></span>
+    <hr size="10px">
+
+<div>
+    {{ blog.content }}
+    <hr size="10px">
+</div>
+{% block page_content %}
+    <small>
+        {{ blog.create_date }} | 카테고리:
+        {% for category in blog.categories.all %}
+            <a>
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </small>
+{% endblock page_content %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
